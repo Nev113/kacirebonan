@@ -69,7 +69,7 @@ const budayaData = [
   },
   {
     title: "Era Kolonial",
-    image: "./assets/head-kingdom.jpg",
+    image: "./assets/head-colonial.jpg",
     description: `Pada masa kolonial Belanda, Cirebon menjadi pelabuhan penting untuk perdagangan rempah-rempah. VOC mendirikan kantor dagang dan benteng untuk mengontrol perdagangan di wilayah ini.`,
     items: [
       {
@@ -88,7 +88,7 @@ const budayaData = [
   },
   {
     title: "Era Kemerdekaan",
-    image: "./assets/head-kingdom.jpg",
+    image: "./assets/head-modern.jpg",
     description: `Setelah kemerdekaan Indonesia, Cirebon berkembang menjadi kota industri dan pariwisata. Kota ini mempertahankan warisan budayanya sambil beradaptasi dengan perkembangan zaman modern.`,
     items: [
       {
@@ -111,3 +111,45 @@ const budayaData = [
     ],
   },
 ];
+
+const containerSection = document.querySelector(".container-kingdom");
+
+function createEraHTML(eraData) {
+  let htmlContent = `
+    <div class="head-kingdom-section">
+      <img src="${eraData.image}" alt="${eraData.title}" />
+      <div class="head-text">
+        <h3>${eraData.title}</h3>
+        <p>${eraData.description}</p>
+      </div>
+    </div>
+  `;
+
+  eraData.items.forEach((item, index) => {
+    htmlContent += `
+      <div class="item-kingdom">
+        <div class="timeline"></div>
+        <div class="timeline-dot">
+          <div class="time-indicator">${item.year}</div>
+        </div>
+        <div class="item-text">
+          <p>${item.content}</p>
+        </div>
+      </div>
+    `;
+  });
+
+  return htmlContent;
+}
+
+function generateAllErasHTML() {
+  let allHTML = "";
+  budayaData.forEach((era) => {
+    allHTML += createEraHTML(era);
+  });
+  return allHTML;
+}
+
+if (containerSection) {
+  containerSection.innerHTML = generateAllErasHTML();
+}
