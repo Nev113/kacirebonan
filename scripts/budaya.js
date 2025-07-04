@@ -43,24 +43,20 @@ const slideImagesWayang = [
   {
     src: "./assets/wayang-kulit-1.jpg",
     alt: "Wayang Kulit Cirebon - Tokoh Utama",
-    text: "Wayang Tokoh Utama",
   },
   {
     src: "./assets/wayang-kulit-2.webp",
     alt: "Wayang Kulit Cirebon - Punakawan",
-    text: "Wayang Punakawan",
   },
   {
     src: "./assets/wayang-kulit-3.jpg",
     alt: "Wayang Kulit Cirebon - Raksasa",
-    text: "Wayang Raksasa",
   },
 ];
 
 let currentSlideIndexTopeng = 0;
 let currentSlideIndexWayang = 0;
 
-// Fungsi untuk slider Tari Topeng
 function initializeTopengSliders() {
   const sliders = document.querySelectorAll(".slide");
 
@@ -71,18 +67,14 @@ function initializeTopengSliders() {
 
     if (!slideContent || !slideButtons.length || !slideText) return;
 
-    // Set button pertama sebagai active
     slideButtons[currentSlideIndexTopeng].classList.add("active");
 
     slideButtons.forEach((button, buttonIndex) => {
       button.addEventListener("click", () => {
-        // Remove active dari semua button
         slideButtons.forEach((btn) => btn.classList.remove("active"));
 
-        // Add active ke button yang diklik
         button.classList.add("active");
 
-        // Update gambar dan text
         const selectedImage = slideImagesTopeng[buttonIndex];
         if (selectedImage) {
           slideContent.src = selectedImage.src;
